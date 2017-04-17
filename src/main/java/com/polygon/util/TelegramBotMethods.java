@@ -8,9 +8,7 @@ public class TelegramBotMethods {
 
 	static {
 		BASE_URL = "https://api.telegram.org/bot" + AppLoader.getProperty("telegram.bot.token") + "/";
-//		CompletableFuture.runAsync(
-//				() -> HttpSender.get(BASE_URL + "setWebhook?url=" + AppLoader.getProperty("telegram.bot.host"))
-//		);
+//        async(() -> HttpSender.get(BASE_URL + "setWebhook?url=" + AppLoader.getProperty("telegram.bot.host")));
 	}
 
 	public static String sendMessage (String chatId, String text) {

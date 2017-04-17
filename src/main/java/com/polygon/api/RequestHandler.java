@@ -1,6 +1,6 @@
 package com.polygon.api;
 
-import com.polygon.TelegramInputParser;
+import com.polygon.util.TelegramInputParser;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
