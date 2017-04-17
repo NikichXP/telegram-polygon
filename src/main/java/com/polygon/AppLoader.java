@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 public class AppLoader {
 
-	private static final ApplicationContext ctx = SpringApplication.run(AppLoader.class, new String[]{});
+	public static final ApplicationContext ctx = SpringApplication.run(AppLoader.class, new String[]{});
 	private static final Object lock = new Object();
 
 	public static void main(String[] args) throws InterruptedException {
@@ -16,6 +16,7 @@ public class AppLoader {
 				Thread.sleep(10);
 			}
 		}
+		System.out.println(TelegramBotMethods.sendMessage("34080460", "Launched"));
 	}
 
 	public static <T> T get(Class<T> clazz) {
@@ -23,4 +24,8 @@ public class AppLoader {
 		return ctx.getBean(clazz);
 	}
 
+	public static String getProperty(String s) {
+		synchronized (lock) {}
+		return ctx.getEnvironment().getProperty(s);
+	}
 }
