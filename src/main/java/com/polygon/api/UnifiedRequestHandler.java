@@ -1,8 +1,8 @@
 package com.polygon.api;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 @RestController
 public class UnifiedRequestHandler {
 
-	@GetMapping("/{whatever}")
+	@RequestMapping("/{whatever}")
 	public ResponseEntity echo(HttpServletRequest req, @PathVariable("whatever") String whatever) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("path = " + whatever);
@@ -22,7 +22,7 @@ public class UnifiedRequestHandler {
 		return ResponseEntity.ok(sb.toString());
 	}
 
-	@GetMapping("/{whatever}/{else}")
+	@RequestMapping("/{whatever}/{else}")
 	public ResponseEntity echo(HttpServletRequest req,
 	                           @PathVariable("whatever") String whatever,
 	                           @PathVariable("else") String _else) {
