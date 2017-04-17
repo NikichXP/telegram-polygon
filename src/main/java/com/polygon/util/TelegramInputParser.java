@@ -1,4 +1,4 @@
-package com.polygon;
+package com.polygon.util;
 
 import com.google.gson.JsonParser;
 import com.polygon.entity.Message;

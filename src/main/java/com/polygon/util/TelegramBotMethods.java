@@ -1,4 +1,6 @@
-package com.polygon;
+package com.polygon.util;
+
+import com.polygon.AppLoader;
 
 public class TelegramBotMethods {
 

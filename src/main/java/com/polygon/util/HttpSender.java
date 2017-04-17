@@ -1,4 +1,4 @@
-package com.polygon;
+package com.polygon.util;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
