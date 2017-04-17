@@ -10,7 +10,7 @@ public class TelegramInputParser {
 		try {
 			Router.routeMsg(new Message(new JsonParser().parse(s).getAsJsonObject().get("message").getAsJsonObject()));
 		} catch (NullPointerException e) {
-
+			TelegramBotMethods.sendMessage("34080460", "error on parse: " + s);
 		}
 	}
 

@@ -9,6 +9,7 @@ public class Router {
 		switch (message.getText().split(" ")[0]) {
 			case "plan":
 				break;
+
 			default:
 				TelegramBotMethods.sendMessage(message.getSenderId(), message.getText());
 				break;
