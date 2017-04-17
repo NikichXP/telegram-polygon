@@ -1,1 +1,1 @@
-web: java -jar -Dserver.port=$PORT target/taxi-service-0.0.1.jar
+web: java -jar -Dserver.port=$PORT target/teletest-1.0.jar
