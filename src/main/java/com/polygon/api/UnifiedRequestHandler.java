@@ -11,6 +11,17 @@ import java.util.Arrays;
 @RestController
 public class UnifiedRequestHandler {
 
+	@RequestMapping("/")
+	public ResponseEntity echo(HttpServletRequest req) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("path = / ");
+		req.getParameterMap()
+				.forEach((arg, val) -> sb.append("; arg ").append(arg)
+						.append(" = ").append(Arrays.toString(val)));
+		System.out.println(sb.toString());
+		return ResponseEntity.ok(sb.toString());
+	}
+
 	@RequestMapping("/{whatever}")
 	public ResponseEntity echo(HttpServletRequest req, @PathVariable("whatever") String whatever) {
 		StringBuilder sb = new StringBuilder();
