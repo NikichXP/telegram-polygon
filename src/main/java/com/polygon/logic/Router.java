@@ -9,7 +9,11 @@ public class Router {
 		switch (message.getText().split(" ")[0]) {
 			case "plan":
 				break;
-
+				
+			case "/myid":
+				System.out.println("My ID requested");
+				ResponseLogic.getMyId(message);
+				break;
 			default:
 				TelegramBotMethods.sendMessage(message.getSenderId(), message.getText());
 				break;

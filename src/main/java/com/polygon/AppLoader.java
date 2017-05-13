@@ -17,7 +17,7 @@ public class AppLoader {
 				Thread.sleep(10);
 			}
 		}
-		System.out.println(TelegramBotMethods.sendMessage("34080460", "Launched"));
+		System.out.println(TelegramBotMethods.sendMessage("34080460", "Telegram-app: Launched"));
 	}
 
 	public static <T> T get(Class<T> clazz) {
