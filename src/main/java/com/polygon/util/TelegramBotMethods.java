@@ -16,5 +16,9 @@ public class TelegramBotMethods {
 	public static String sendMessage (String chatId, String text) {
 		return HttpSender.post(BASE_URL + "sendMessage", "chat_id", chatId, "text", text);
 	}
+	
+	public static String sendInlineResponse (String queryId, String text) {
+		return HttpSender.post(BASE_URL + "answerInlineQuery", "inline_query_id", queryId, "text", text);
+	}
 
 }
