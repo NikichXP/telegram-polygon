@@ -1,6 +1,7 @@
 package com.polygon.api;
 
 import com.polygon.util.TelegramInputParser;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,8 +33,19 @@ public class RequestHandler {
 			}
 		}
 		System.out.println(sb.toString());
-		TelegramInputParser.analyze(sb.toString());
+		try {
+			TelegramInputParser.analyze(sb.toString());
+		} catch (Exception e) {
+			System.out.println(sb.toString());
+		}
 
+	}
+	
+	@RequestMapping ("/github")
+	public ResponseEntity github (HttpServletRequest req) throws IOException {
+		System.out.println(new BufferedReader(new InputStreamReader(req.getInputStream(), StandardCharsets.UTF_8))
+				.lines().reduce((s1, s2) -> s1 + s2).orElse(""));
+		return ResponseEntity.ok(null);
 	}
 
 }
