@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 @RestController
 public class RequestHandler {
@@ -43,8 +44,10 @@ public class RequestHandler {
 	
 	@RequestMapping ("/github")
 	public ResponseEntity github (HttpServletRequest req) throws IOException {
-		System.out.println(new BufferedReader(new InputStreamReader(req.getInputStream(), StandardCharsets.UTF_8))
+		System.out.println("This is JSON req:" + new BufferedReader(new InputStreamReader(req.getInputStream(), StandardCharsets.UTF_8))
 				.lines().reduce((s1, s2) -> s1 + s2).orElse(""));
+		System.out.print("This is request params: ");
+		req.getParameterMap().forEach((k, v) -> System.out.print(k + " : " + Arrays.toString(v) + "; "));
 		return ResponseEntity.ok(null);
 	}
 
