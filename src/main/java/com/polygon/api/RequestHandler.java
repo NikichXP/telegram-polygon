@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 @RestController
 public class RequestHandler {
 
-	@RequestMapping("/")
+	@RequestMapping("/telegram")
 	public void listen(HttpServletRequest req) throws IOException {
 		String x = new BufferedReader(new InputStreamReader(req.getInputStream(), StandardCharsets.UTF_8))
 				.lines().reduce((s1, s2) -> s1 + s2).orElse("");
