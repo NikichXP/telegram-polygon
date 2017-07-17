@@ -20,6 +20,10 @@ public class JsonUtil {
 		this.json = json;
 	}
 	
+	public static JsonUtil of (String json) {
+		return new JsonUtil(json);
+	}
+	
 	/**
 	 * Get array index
 	 *
@@ -37,12 +41,8 @@ public class JsonUtil {
 				.getAsJsonObject());
 	}
 	
-	public JsonUtil get (String name) {
+	public JsonUtil getJson (String name) {
 		return new JsonUtil(json.getAsJsonObject(name));
-	}
-	
-	public static JsonUtil of (String json) {
-		return new JsonUtil(json);
 	}
 	
 	public String getX (String name) {
@@ -54,14 +54,22 @@ public class JsonUtil {
 			if (part[i].contains("[")) {
 				ret = ret.arr(part[i]);
 			} else {
-				ret = ret.get(part[i]);
+				ret = ret.getJson(part[i]);
 			}
 		}
-		return ret.json.get(part[part.length-1]).toString();
+		return ret.json.get(part[part.length - 1]).toString();
+	}
+	
+	public String get (String name) {
+		String ret = getX(name);
+		if (ret.startsWith("\"") && ret.endsWith("\"")) {
+			ret = ret.substring(1, ret.length() - 1);
+		}
+		return ret;
 	}
 	
 	@Override
-	public String toString() {
+	public String toString () {
 		return json.toString();
 	}
 	

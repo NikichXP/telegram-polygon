@@ -9,7 +9,10 @@ public class Router {
 		switch (message.getText().split(" ")[0]) {
 			case "plan":
 				break;
-				
+			case "/register":
+			case "/subscribe":
+				TelegramBotMethods.sendMessage(message.getSenderId(), "Register detected:" + message.getText());
+				ResponseLogic.subscribeLogs(message.getText().split(" ")[1], message.getText().split(" ")[2], message.getText().split(" ")[3]);
 			case "/myid":
 				System.out.println("My ID requested");
 				ResponseLogic.getMyId(message);

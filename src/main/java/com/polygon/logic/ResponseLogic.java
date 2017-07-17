@@ -11,4 +11,8 @@ public class ResponseLogic {
 		
 	}
 	
+	public static void subscribeLogs (String app, String id, String level) {
+		Subscribers.validateAppExist(app);
+		Subscribers.subscribe(app, id, Integer.valueOf(level));
+	}
 }
