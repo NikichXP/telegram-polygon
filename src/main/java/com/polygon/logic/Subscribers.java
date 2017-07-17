@@ -34,7 +34,7 @@ public class Subscribers {
 	}
 	
 	private static boolean canHear (String app, String user, Integer level) {
-		return subscribers.get(app) != null && subscribers.get(app).get(user) != null && subscribers.get(app).get(user) >= level;
+		return subscribers.get(app) != null && subscribers.get(app).get(user) != null && subscribers.get(app).get(user) <= level;
 	}
 	
 	private static void subscribeWork (String app, String user, Integer level, boolean safe) {
