@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping ("/api")
 public class ExternalAPI {
 	
-	@PostMapping ("/log/{app}")
+	@RequestMapping ("/log/{app}")
 	public ResponseEntity log (@PathVariable ("app") String app,
 	                           @RequestParam ("message") String message,
 	                           @RequestParam ("level") Integer level) {
@@ -17,5 +17,13 @@ public class ExternalAPI {
 		return ResponseEntity.ok("OK");
 	}
 	
+	@RequestMapping ("/reg/{app}")
+	public ResponseEntity registerApp (@PathVariable ("app") String app,
+	                                   @RequestParam ("url") String url) {
+		Subscribers.setCallbackUrl(app, url);
+		return ResponseEntity.ok("OK");
+	}
 	
 }
+
+// TODO reg/app must receive token

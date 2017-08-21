@@ -3,7 +3,6 @@ package com.polygon.logic;
 import com.polygon.AppLoader;
 import com.polygon.entity.SubscriberInfo;
 import com.polygon.repo.SubscriberInfoRepo;
-import lombok.val;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,6 +16,7 @@ public class Subscribers {
 	 * Key = project, value: list: key: userID, value: level of alerting
 	 */
 	private static HashMap<String, Map<String, Integer>> subscribers = new HashMap<>();
+	private static HashMap<String, String> callbackUrls = new HashMap<>();
 	private static SubscriberInfoRepo repo;
 	
 	static {
@@ -57,10 +57,17 @@ public class Subscribers {
 	
 	public static void subscribe (String app, String user, Integer level) {
 		subscribeWork(app, user, level, false);
+		if (callbackUrls.get(app) != null) {
+//			subscribers.get() TODO Get all subscribers and send min value to callback URL
+		}
 	}
 	
 	public static void validateAppExist (String app) {
 		subscribers.putIfAbsent(app, new ConcurrentHashMap<>());
 	}
 	
+	public static void setCallbackUrl (String app, String url) {
+		validateAppExist(app);
+		callbackUrls.put(app, url);
+	}
 }
